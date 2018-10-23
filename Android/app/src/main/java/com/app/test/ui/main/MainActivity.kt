@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        toolbar = binding.toolbar?.toolbar!!
+        toolbar = binding.toolbar.toolbar
 
         setSupportActionBar(toolbar)
         val view = layoutInflater.inflate(R.layout.layout_toolbar, null)
@@ -59,6 +59,16 @@ class MainActivity : BaseActivity() {
     fun hideToolbarBack() {
         if (imgToolbarBack.visibility != View.GONE)
         imgToolbarBack.visibility = View.GONE
+    }
+
+    fun showReviewTitle(){
+        if (txtToolbarReview.visibility != View.VISIBLE)
+            txtToolbarReview.visibility = View.VISIBLE
+    }
+
+    fun hideReviewTitle(){
+        if (txtToolbarReview.visibility != View.VISIBLE)
+            txtToolbarReview.visibility = View.VISIBLE
     }
 
     override fun onBackPressed() {

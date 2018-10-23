@@ -52,4 +52,6 @@ class ReviewDataFragment : BaseFragment() {
     override fun getToolbarTitle(): String? = null
 
     override fun showBackButton(): Boolean = false
+
+    override fun showReviewTitle(): Boolean = false
 }

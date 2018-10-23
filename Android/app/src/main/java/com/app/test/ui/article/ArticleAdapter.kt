@@ -10,7 +10,8 @@ import com.app.test.R
 import com.app.test.databinding.LayoutArticleItemBinding
 import com.app.test.model.Article
 
-class ArticleAdapter(private val articleList: List<Article>):RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+class ArticleAdapter(private val recyclerView: RecyclerView,
+                     private val articleList: List<Article>):RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_article_item,parent,false)
@@ -24,6 +25,14 @@ class ArticleAdapter(private val articleList: List<Article>):RecyclerView.Adapte
         for (media in article.media) {
             viewholder.binding?.setVariable(BR.media,media)
             viewholder.binding?.executePendingBindings()
+        }
+
+        viewholder.binding?.btnLike?.setOnClickListener {
+            recyclerView.scrollToPosition(position+1)
+        }
+
+        viewholder.binding?.btnDislike?.setOnClickListener {
+            recyclerView.scrollToPosition(position+1)
         }
     }
 

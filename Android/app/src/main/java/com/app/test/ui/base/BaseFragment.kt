@@ -19,20 +19,15 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
 
     @Inject
     lateinit var preferences: SharedPreferences
-
     protected lateinit var fragmentUtils: FragmentUtils
-
     protected lateinit var mainActivity: MainActivity
-
     protected lateinit var mContext: Context
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (activity is MainActivity) {
             mainActivity = activity as MainActivity
         }
-
         CustomApplication.appComponent.inject(this)
         fragmentUtils = FragmentUtils(fragmentManager)
     }
@@ -42,28 +37,26 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
         mContext = context
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun onResume() {
-     //   mPresenter.subscribe()
         super.onResume()
-
         if (activity is MainActivity) {
             mainActivity = activity as MainActivity
-                if (getToolbarTitle() != null)
-                    mainActivity.setToolbarTitle(getToolbarTitle()!!)
+            if (getToolbarTitle() != null)
+                mainActivity.setToolbarTitle(getToolbarTitle()!!)
 
-                if (showBackButton())
-                    mainActivity.showToolbarBack()
-                else
-                    mainActivity.hideToolbarBack()
+            if (showBackButton())
+                mainActivity.showToolbarBack()
+            else
+                mainActivity.hideToolbarBack()
+
+            if (showReviewTitle())
+                mainActivity.showReviewTitle()
+            else
+                mainActivity.hideReviewTitle()
         } else { }
     }
 
     override fun onPause() {
-     //   mPresenter.unSubscribe()
         super.onPause()
         activity?.let { hideKeyBoard(it) }
     }
@@ -79,4 +72,6 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
     protected abstract fun getToolbarTitle(): String?
 
     protected abstract fun showBackButton(): Boolean
+
+    protected abstract fun showReviewTitle(): Boolean
 }

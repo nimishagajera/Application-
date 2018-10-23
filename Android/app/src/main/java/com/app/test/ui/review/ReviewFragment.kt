@@ -59,6 +59,7 @@ class ReviewFragment : BaseFragment() {
 
     override fun showBackButton(): Boolean = true
 
+    override fun showReviewTitle(): Boolean = false
 
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
         private val mFragmentList = ArrayList<Fragment>()

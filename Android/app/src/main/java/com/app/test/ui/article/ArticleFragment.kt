@@ -35,27 +35,31 @@ class ArticleFragment : BaseFragment(),ArticleContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showLoading()
         presenter.retrieveArticles(1,"de_DE",10)
         binding.recyclerArticle.layoutManager = LinearLayoutManager(mContext,LinearLayout.HORIZONTAL,false)
-        adapter = ArticleAdapter(articleList)
+        adapter = ArticleAdapter(binding.recyclerArticle, articleList)
         binding.recyclerArticle.adapter = adapter
 
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.recyclerArticle)
-
     }
 
     override fun getToolbarTitle(): String? = getString(R.string.str_articles)
 
     override fun showBackButton(): Boolean = false
 
+    override fun showReviewTitle(): Boolean = true
+
     override fun onRetrieveArticlesSuccess(response: ArticleResponse) {
+        hideLoading()
         Log.d("response",response.toString())
         articleList.addAll(response._embedded.articles)
         adapter.notifyDataSetChanged()
     }
 
     override fun onRetrieveArticlesFailed(message: String) {
+        hideLoading()
         Log.d("message",message)
     }
 }
