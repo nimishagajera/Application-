@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:contentInsetLeft="0dp"
+        app:contentInsetLeft="0dp"
+        android:elevation="6dp"
+        android:background="@color/colorBlueBorder">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_toolbar_back"
+                android:layout_width="@dimen/back_icon_width"
+                android:layout_height="@dimen/back_icon_height"
+                android:minHeight="@dimen/back_icon_height"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/ic_back"
+                android:contentDescription="@string/str_back_arrow"/>
+
+            <TextView
+                android:id="@+id/txt_toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/img_toolbar_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_toolbar_back" />
+
+            <TextView
+                android:id="@+id/txt_toolbar_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end"
+                android:text="@string/str_review"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.Toolbar>
+</layout>

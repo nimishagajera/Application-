@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="radius">8dp</dimen>
+    <dimen name="img_article_min_height">250dp</dimen>
+
+    <dimen name="margin_top">16dp</dimen>
+    <dimen name="margin_start">16dp</dimen>
+    <dimen name="margin_end">16dp</dimen>
+    <dimen name="margin_bottom">16dp</dimen>
+
+    <dimen name="margin_bottom_medium">24dp</dimen>
+    <dimen name="back_icon_height">24dp</dimen>
+    <dimen name="back_icon_width">24dp</dimen>
+
+</resources>

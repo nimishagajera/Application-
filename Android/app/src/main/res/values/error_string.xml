@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="str_internet_connection_error">No network available, please check your WiFi or Data connection.</string>
+    <string name="str_internal_server_error">Internal Server error, please try again after a few minutes.</string>
+    <string name="error_not_found">Data not found, please try again after a few minutes.</string>
+</resources>

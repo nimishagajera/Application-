@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Application</string>
+    <string name="str_start">start</string>
+    <string name="str_back_arrow">Back arrow</string>
+    <string name="textview">TextView</string>
+    <string name="str_review">Review</string>
+    <string name="str_articles">Articles</string>
+    <string name="str_like">like</string>
+    <string name="str_dislike">dislike</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_gridview">GridView</string>
+    <string name="str_listview">ListView</string>
+    <string name="img_article_desc">Imageview of article</string>
 </resources>
