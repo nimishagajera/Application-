@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.app.test.R
 import com.app.test.databinding.ActivityMainBinding
+import com.app.test.ui.article.ArticleFragment
 import com.app.test.ui.base.BaseActivity
 import com.app.test.ui.review.ReviewFragment
 
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity() {
         txtToolbarReview = toolbar.findViewById(R.id.txt_toolbar_review)
         imgToolbarBack = toolbar.findViewById(R.id.img_toolbar_back)
 
-        fragmentUtils.addFragment(R.id.container,ArticleFragment())
+        fragmentUtils.addFragment(R.id.container, ArticleFragment())
 
         txtToolbarReview.setOnClickListener {
             fragmentUtils.addFragment(R.id.container,ReviewFragment())

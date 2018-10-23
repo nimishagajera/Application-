@@ -39,10 +39,6 @@ class ReviewDataFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        for(i in 0 until 20) {
-            articleList.add(Article("Hello ".plus(i),ContextCompat.getDrawable(mContext,R.mipmap.ic_launcher)))
-        }
-
         adapter = ReviewListAdapter(articleList)
         binding.recyclerViewData.adapter = adapter
         if (arguments != null)

@@ -22,7 +22,6 @@
             android:contentDescription="@string/img_article_desc"
             android:minHeight="60dp"
             android:minWidth="60dp"
-            android:src="@{article.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
