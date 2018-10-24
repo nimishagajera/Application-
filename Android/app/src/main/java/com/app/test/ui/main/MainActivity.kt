@@ -17,7 +17,6 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var toolbar: Toolbar
     private lateinit var txtToolbarTitle: TextView
-    private lateinit var txtToolbarReview: TextView
     private lateinit var imgToolbarBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,14 +29,9 @@ class MainActivity : BaseActivity() {
         toolbar.addView(view)
 
         txtToolbarTitle = toolbar.findViewById(R.id.txt_toolbar_title)
-        txtToolbarReview = toolbar.findViewById(R.id.txt_toolbar_review)
         imgToolbarBack = toolbar.findViewById(R.id.img_toolbar_back)
 
         fragmentUtils.addFragment(R.id.container, ArticleFragment())
-
-        txtToolbarReview.setOnClickListener {
-            fragmentUtils.addFragment(R.id.container,ReviewFragment())
-        }
     }
 
     fun setToolbarTitle(strTitle: String?) {
@@ -59,16 +53,6 @@ class MainActivity : BaseActivity() {
     fun hideToolbarBack() {
         if (imgToolbarBack.visibility != View.GONE)
         imgToolbarBack.visibility = View.GONE
-    }
-
-    fun showReviewTitle(){
-        if (txtToolbarReview.visibility != View.VISIBLE)
-            txtToolbarReview.visibility = View.VISIBLE
-    }
-
-    fun hideReviewTitle(){
-        if (txtToolbarReview.visibility != View.VISIBLE)
-            txtToolbarReview.visibility = View.VISIBLE
     }
 
     override fun onBackPressed() {

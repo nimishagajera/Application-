@@ -10,8 +10,8 @@ import javax.inject.Singleton
 @Module
 class SharedPreferenceModule(private val context: Context) {
 
-   @Provides
-   @Singleton
+    @Provides
+    @Singleton
     fun provideSharedPreferences(): SharedPreferences {
         return context.getSharedPreferences(AppConstants.sharedPreference, Context.MODE_PRIVATE)
     }

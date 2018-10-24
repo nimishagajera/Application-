@@ -4,10 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.app.test.CustomApplication
+import com.app.test.persistance.dao.UserArticleDao
 import com.app.test.ui.main.MainActivity
 import com.app.test.util.FragmentUtils
 import com.app.test.util.hideKeyBoard
@@ -19,6 +18,10 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
 
     @Inject
     lateinit var preferences: SharedPreferences
+
+    @Inject
+    lateinit var userArticleDao: UserArticleDao
+
     protected lateinit var fragmentUtils: FragmentUtils
     protected lateinit var mainActivity: MainActivity
     protected lateinit var mContext: Context
@@ -48,11 +51,6 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
                 mainActivity.showToolbarBack()
             else
                 mainActivity.hideToolbarBack()
-
-            if (showReviewTitle())
-                mainActivity.showReviewTitle()
-            else
-                mainActivity.hideReviewTitle()
         } else { }
     }
 
@@ -72,6 +70,4 @@ abstract class BaseFragment: Fragment(), BaseContract.BaseView {
     protected abstract fun getToolbarTitle(): String?
 
     protected abstract fun showBackButton(): Boolean
-
-    protected abstract fun showReviewTitle(): Boolean
 }

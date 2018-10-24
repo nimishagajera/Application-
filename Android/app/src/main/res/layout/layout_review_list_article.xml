@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="article"
-            type="com.app.test.model.Article"/>
+            type="com.app.test.persistance.entity.UserArticle"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -20,8 +22,9 @@
             android:layout_marginStart="@dimen/margin_start"
             android:layout_marginTop="@dimen/margin_top"
             android:contentDescription="@string/img_article_desc"
-            android:minHeight="60dp"
-            android:minWidth="60dp"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:src="@{article.articleImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,11 +34,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start"
-            android:text="@{article.title}"
-            android:textSize="@dimen/_14sdp"
+            android:text="@{article.articleTitle}"
             android:textColor="@color/colorGray"
+            android:textSize="@dimen/_14sdp"
             app:layout_constraintBottom_toBottomOf="@+id/img_article"
             app:layout_constraintStart_toEndOf="@+id/img_article"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_liked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:contentDescription="@string/img_liked_article"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_like"
+            android:visibility="@{article.isLiked ? View.VISIBLE : View.GONE}"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

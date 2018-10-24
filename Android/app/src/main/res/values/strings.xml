@@ -12,5 +12,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_gridview">GridView</string>
     <string name="str_listview">ListView</string>
-    <string name="img_article_desc">Imageview of article</string>
+    <string name="img_article_desc">ImageView of article</string>
+    <string name="img_liked_article">Image for liked article</string>
+    <string name="no_article_message">Sorry. There is no article for now. \nPlease try again.</string>
+    <string name="str_retry">retry</string>
 </resources>

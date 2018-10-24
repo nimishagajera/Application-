@@ -7,4 +7,6 @@
     <color name="colorBlueBorder">#469BEB</color>
     <color name="colorBlueSolid">#50becd</color>
     <color name="colorGray">#565656</color>
+    <color name="colorLike">#59da0f</color>
+    <color name="colorDislike">#ff0000</color>
 </resources>

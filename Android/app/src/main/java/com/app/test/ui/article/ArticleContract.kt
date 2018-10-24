@@ -9,7 +9,7 @@ interface ArticleContract {
 
         fun onRetrieveArticlesSuccess(response: ArticleResponse)
 
-        fun onRetrieveArticlesFailed(message: String)
+        fun onRetrieveArticlesFailed()
 
     }
 

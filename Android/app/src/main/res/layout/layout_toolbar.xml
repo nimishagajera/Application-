@@ -38,20 +38,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/img_toolbar_back" />
-
-            <TextView
-                android:id="@+id/txt_toolbar_review"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_end"
-                android:text="@string/str_review"
-                android:textAllCaps="true"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@android:color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Toolbar>
 </layout>

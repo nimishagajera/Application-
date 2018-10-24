@@ -7,18 +7,21 @@ import com.app.test.util.RxUtils
 class ArticlePresenter(private val view: ArticleContract.View):BasePresenter(view), ArticleContract.Presenter {
 
     override fun retrieveArticles(appDomain: Int, locale: String, limit: Int) {
-        apiService.retrieveArticles(appDomain,locale,limit)
-                .compose(RxUtils.applySchedulers())
-                .subscribe(
-                        { response: ArticleResponse ->
-                            view.hideLoading()
-                            view.onRetrieveArticlesSuccess(response)
-                        },
-                        { e: Throwable ->
-                            view.hideLoading()
-                            e.message?.let { view.onRetrieveArticlesFailed(it) }
-                        },
-                        { view.hideLoading() }
-                )
+        mSubscription.add(
+                apiService.retrieveArticles(appDomain,locale,limit)
+                        .compose(RxUtils.applySchedulers())
+                        .subscribe(
+                                { response: ArticleResponse ->
+                                    view.hideLoading()
+                                    view.onRetrieveArticlesSuccess(response)
+                                },
+                                { _: Throwable ->
+                                    view.hideLoading()
+                                    view.onRetrieveArticlesFailed()
+                                },
+                                { view.hideLoading() }
+                        )
+        )
+
     }
 }

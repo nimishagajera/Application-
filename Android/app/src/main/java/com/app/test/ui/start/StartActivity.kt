@@ -15,6 +15,7 @@ class StartActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start)
+        userArticleDao.deleteAllArticles()
         binding.btnStart.setOnClickListener {
             ActivityUtils.openActivityAndFinish(this@StartActivity, MainActivity::class.java)
         }

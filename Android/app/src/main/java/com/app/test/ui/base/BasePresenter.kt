@@ -9,7 +9,6 @@ import javax.inject.Inject
 
 open class BasePresenter(@NonNull var mView: BaseContract.BaseView): BaseContract.BasePresenter {
 
-
     protected lateinit var mSubscription: CompositeSubscription
 
     @Inject
@@ -17,7 +16,6 @@ open class BasePresenter(@NonNull var mView: BaseContract.BaseView): BaseContrac
 
     @Inject
     protected lateinit var context:Context
-
 
     init {
         CustomApplication.appComponent.inject(this)
@@ -31,7 +29,6 @@ open class BasePresenter(@NonNull var mView: BaseContract.BaseView): BaseContrac
     override fun unSubscribe() {
         if (mSubscription != null) {
             mSubscription.clear()
-
         }
     }
 }

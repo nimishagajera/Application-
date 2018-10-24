@@ -38,28 +38,33 @@ class ArticleFragment : BaseFragment(),ArticleContract.View {
         showLoading()
         presenter.retrieveArticles(1,"de_DE",10)
         binding.recyclerArticle.layoutManager = LinearLayoutManager(mContext,LinearLayout.HORIZONTAL,false)
-        adapter = ArticleAdapter(binding.recyclerArticle, articleList)
+        adapter = ArticleAdapter(binding.recyclerArticle,fragmentUtils, userArticleDao,articleList)
         binding.recyclerArticle.adapter = adapter
 
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.recyclerArticle)
+
+        binding.btnRetry.setOnClickListener {
+            presenter.retrieveArticles(1,"de_DE",10)
+        }
     }
 
     override fun getToolbarTitle(): String? = getString(R.string.str_articles)
 
     override fun showBackButton(): Boolean = false
 
-    override fun showReviewTitle(): Boolean = true
-
     override fun onRetrieveArticlesSuccess(response: ArticleResponse) {
         hideLoading()
-        Log.d("response",response.toString())
+        binding.recyclerArticle.visibility = View.VISIBLE
+        binding.groupError.visibility = View.GONE
         articleList.addAll(response._embedded.articles)
         adapter.notifyDataSetChanged()
+
     }
 
-    override fun onRetrieveArticlesFailed(message: String) {
+    override fun onRetrieveArticlesFailed() {
         hideLoading()
-        Log.d("message",message)
-    }
+        binding.recyclerArticle.visibility = View.GONE
+        binding.groupError.visibility = View.VISIBLE
+   }
 }

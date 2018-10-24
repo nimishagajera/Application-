@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="article"
+            type="com.app.test.persistance.entity.UserArticle"/>
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -9,12 +17,24 @@
             android:id="@+id/img_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="60dp"
-            android:minWidth="60dp"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher"
+            android:src="@{article.articleImage}"
             android:contentDescription="@string/img_article_desc"/>
+
+        <ImageView
+            android:id="@+id/img_liked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom_small"
+            android:layout_marginEnd="@dimen/margin_end_small"
+            android:contentDescription="@string/img_liked_article"
+            app:layout_constraintBottom_toBottomOf="@+id/img_article"
+            app:layout_constraintEnd_toEndOf="@+id/img_article"
+            app:srcCompat="@drawable/ic_like"
+            android:visibility="@{article.isLiked ? View.VISIBLE : View.GONE}"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

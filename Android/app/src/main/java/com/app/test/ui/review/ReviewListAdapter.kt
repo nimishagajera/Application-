@@ -9,8 +9,9 @@ import com.app.test.BR
 import com.app.test.R
 import com.app.test.databinding.LayoutReviewListArticleBinding
 import com.app.test.model.Article
+import com.app.test.persistance.entity.UserArticle
 
-class ReviewListAdapter(private val articleList: List<Article>):RecyclerView.Adapter<ReviewListAdapter.ViewHolder>() {
+class ReviewListAdapter(private val articleList: List<UserArticle>):RecyclerView.Adapter<ReviewListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_review_list_article,parent,false)

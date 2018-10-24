@@ -12,5 +12,7 @@
     <dimen name="margin_bottom_medium">24dp</dimen>
     <dimen name="back_icon_height">24dp</dimen>
     <dimen name="back_icon_width">24dp</dimen>
+    <dimen name="margin_bottom_small">4dp</dimen>
+    <dimen name="margin_end_small">4dp</dimen>
 
 </resources>

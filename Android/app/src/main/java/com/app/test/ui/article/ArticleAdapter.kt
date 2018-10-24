@@ -9,8 +9,14 @@ import com.app.test.BR
 import com.app.test.R
 import com.app.test.databinding.LayoutArticleItemBinding
 import com.app.test.model.Article
+import com.app.test.persistance.dao.UserArticleDao
+import com.app.test.persistance.entity.UserArticle
+import com.app.test.ui.review.ReviewFragment
+import com.app.test.util.FragmentUtils
 
 class ArticleAdapter(private val recyclerView: RecyclerView,
+                     private val  fragmentUtils: FragmentUtils,
+                     private val userArticleDao: UserArticleDao,
                      private val articleList: List<Article>):RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
@@ -22,17 +28,28 @@ class ArticleAdapter(private val recyclerView: RecyclerView,
 
     override fun onBindViewHolder(viewholder: ViewHolder, position: Int) {
         val article = articleList[position]
+        var articleImage = ""
         for (media in article.media) {
+            articleImage = media.uri
             viewholder.binding?.setVariable(BR.media,media)
             viewholder.binding?.executePendingBindings()
         }
 
         viewholder.binding?.btnLike?.setOnClickListener {
             recyclerView.scrollToPosition(position+1)
+            userArticleDao.insertArticle(UserArticle(article.title,articleImage,true))
         }
 
         viewholder.binding?.btnDislike?.setOnClickListener {
             recyclerView.scrollToPosition(position+1)
+            userArticleDao.insertArticle(UserArticle(article.title,articleImage,false))
+        }
+
+        if (position == itemCount -1)
+            viewholder.binding?.btnReview?.visibility = View.VISIBLE
+
+        viewholder.binding?.btnReview?.setOnClickListener {
+            fragmentUtils.addFragment(R.id.container, ReviewFragment())
         }
     }
 

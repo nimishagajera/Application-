@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.app.test.CustomApplication
 import com.app.test.R
+import com.app.test.persistance.dao.UserArticleDao
 import com.app.test.util.FragmentUtils
 import guru.jini.ilf.utils.LoadingViewUtils
 import javax.inject.Inject
@@ -16,7 +17,7 @@ import javax.inject.Inject
 abstract class BaseActivity : AppCompatActivity(), BaseContract.BaseView {
 
     @Inject
-    lateinit var preferences: SharedPreferences
+    lateinit var userArticleDao: UserArticleDao
 
     private lateinit var mPresenter: BaseContract.BasePresenter
 

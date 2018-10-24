@@ -41,7 +41,7 @@ class ReviewFragment : BaseFragment() {
         adjustTabLayout()
     }
 
-    fun adjustTabLayout() {
+    private fun adjustTabLayout() {
         binding.tabLayout.setupWithViewPager(binding.viewpager)
         val slidingTabStrip = binding.tabLayout.getChildAt(0) as ViewGroup
         for (tabIndex in 0 until binding.tabLayout.tabCount) {
@@ -58,8 +58,6 @@ class ReviewFragment : BaseFragment() {
     override fun getToolbarTitle(): String? = getString(R.string.str_review)
 
     override fun showBackButton(): Boolean = true
-
-    override fun showReviewTitle(): Boolean = false
 
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
         private val mFragmentList = ArrayList<Fragment>()
