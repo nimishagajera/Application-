@@ -3,4 +3,6 @@
     <string name="str_internet_connection_error">No network available, please check your WiFi or Data connection.</string>
     <string name="str_internal_server_error">Internal Server error, please try again after a few minutes.</string>
     <string name="error_not_found">Data not found, please try again after a few minutes.</string>
+    <string name="no_article_message">Sorry. There is no article for now. \nPlease try again.</string>
+    <string name="no_more_article_left">No more article left. Please press review button now.</string>
 </resources>

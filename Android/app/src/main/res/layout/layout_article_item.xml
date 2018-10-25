@@ -18,14 +18,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
+            android:contentDescription="@string/img_article_desc"
             android:minHeight="@dimen/img_article_min_height"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
+            android:src="@{media.uri}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:src="@{media.uri}"
-            android:contentDescription="@string/img_article_desc"/>
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <Button
             android:id="@+id/btn_like"
@@ -33,10 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start"
             android:layout_marginTop="@dimen/margin_top"
-            android:text="@string/str_like"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@android:color/white"
             android:background="@drawable/ic_like_background"
+            android:text="@string/str_like"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toStartOf="@+id/btn_dislike"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -49,10 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_end"
             android:layout_marginTop="@dimen/margin_top"
-            android:text="@string/str_dislike"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@android:color/white"
             android:background="@drawable/ic_dislike_background"
+            android:text="@string/str_dislike"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_like"
@@ -76,13 +76,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_bottom"
-            android:text="@string/str_review"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@android:color/white"
             android:background="@drawable/ic_rounded_gray_background"
+            android:text="@string/str_review"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12sdp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <android.support.constraint.Group
+            android:id="@+id/group_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="img_article,btn_like,btn_dislike" />
+
+        <TextView
+            android:id="@+id/txt_no_article"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:text="@string/no_more_article_left"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/_16sdp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

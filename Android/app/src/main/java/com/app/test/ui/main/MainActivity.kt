@@ -31,7 +31,11 @@ class MainActivity : BaseActivity() {
         txtToolbarTitle = toolbar.findViewById(R.id.txt_toolbar_title)
         imgToolbarBack = toolbar.findViewById(R.id.img_toolbar_back)
 
-        fragmentUtils.addFragment(R.id.container, ArticleFragment())
+        imgToolbarBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        fragmentUtils.replaceFragment(R.id.container, ArticleFragment())
     }
 
     fun setToolbarTitle(strTitle: String?) {
@@ -56,10 +60,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (fragmentManager.getBackStackEntryCount() > 0) {
-            fragmentManager.popBackStack();
+        if (fragmentManager.backStackEntryCount > 0) {
+            fragmentManager.popBackStack()
         } else {
-            super.onBackPressed();
+            super.onBackPressed()
         }
     }
 

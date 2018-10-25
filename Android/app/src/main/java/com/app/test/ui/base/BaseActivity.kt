@@ -47,5 +47,4 @@ abstract class BaseActivity : AppCompatActivity(), BaseContract.BaseView {
     override fun hideLoading() {
         LoadingViewUtils.hideLoading()
     }
-
 }

@@ -6,6 +6,7 @@ import com.app.test.app.di.DaggerAppComponent
 import com.app.test.app.di.module.ContextModule
 import com.app.test.app.di.module.DatabaseModule
 import com.app.test.app.di.module.NetworkModule
+import com.app.test.app.di.module.SharedPreferenceModule
 
 
 class CustomApplication: Application() {
@@ -19,9 +20,10 @@ class CustomApplication: Application() {
         super.onCreate()
     }
 
-    protected fun initComponent() {
+    private fun initComponent() {
         appComponent = DaggerAppComponent.builder()
                 .contextModule(ContextModule(applicationContext))
+                .sharedPreferenceModule(SharedPreferenceModule(applicationContext))
                 .networkModule(NetworkModule())
                 .databaseModule(DatabaseModule())
                 .build()

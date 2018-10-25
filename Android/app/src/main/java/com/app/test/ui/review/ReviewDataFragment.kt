@@ -3,6 +3,7 @@ package com.app.test.ui.review
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -40,7 +41,7 @@ class ReviewDataFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        articleList.addAll(userArticleDao.article)
+        articleList.addAll(userArticleDao.articles)
 
         listAdapter = ReviewListAdapter(articleList)
         gridAdapter = ReviewGridAdapter(articleList)
@@ -53,11 +54,9 @@ class ReviewDataFragment : BaseFragment() {
                 binding.recyclerViewData.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
                 binding.recyclerViewData.adapter = listAdapter
             }
-
-        Log.d("user-article", userArticleDao.article.toString())
     }
 
     override fun getToolbarTitle(): String? = null
 
-    override fun showBackButton(): Boolean = false
+    override fun showBackButton(): Boolean = true
 }

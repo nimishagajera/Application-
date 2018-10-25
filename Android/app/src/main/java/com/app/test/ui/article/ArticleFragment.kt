@@ -4,7 +4,6 @@ package com.app.test.ui.article
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,11 +44,12 @@ class ArticleFragment : BaseFragment(),ArticleContract.View {
         snapHelper.attachToRecyclerView(binding.recyclerArticle)
 
         binding.btnRetry.setOnClickListener {
+            showLoading()
             presenter.retrieveArticles(1,"de_DE",10)
         }
     }
 
-    override fun getToolbarTitle(): String? = getString(R.string.str_articles)
+    override fun getToolbarTitle(): String? = getString(R.string.str_selection)
 
     override fun showBackButton(): Boolean = false
 
@@ -67,4 +67,9 @@ class ArticleFragment : BaseFragment(),ArticleContract.View {
         binding.recyclerArticle.visibility = View.GONE
         binding.groupError.visibility = View.VISIBLE
    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.unSubscribe()
+    }
 }

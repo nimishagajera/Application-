@@ -19,6 +19,8 @@ class ArticleAdapter(private val recyclerView: RecyclerView,
                      private val userArticleDao: UserArticleDao,
                      private val articleList: List<Article>):RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
+    private var likedCount = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_article_item,parent,false)
         return ViewHolder(view)
@@ -37,6 +39,7 @@ class ArticleAdapter(private val recyclerView: RecyclerView,
 
         viewholder.binding?.btnLike?.setOnClickListener {
             recyclerView.scrollToPosition(position+1)
+            likedCount++
             userArticleDao.insertArticle(UserArticle(article.title,articleImage,true))
         }
 
@@ -45,8 +48,14 @@ class ArticleAdapter(private val recyclerView: RecyclerView,
             userArticleDao.insertArticle(UserArticle(article.title,articleImage,false))
         }
 
-        if (position == itemCount -1)
+        viewholder.binding?.txtCount?.text = viewholder.binding?.imgArticle?.context?.getString(R.string.str_liked_articles)
+                .plus(likedCount.toString().plus("/").plus(articleList.size))
+
+        if (position == itemCount -1) {
             viewholder.binding?.btnReview?.visibility = View.VISIBLE
+            viewholder.binding?.txtNoArticle?.visibility = View.VISIBLE
+            viewholder.binding?.groupArticle?.visibility = View.GONE
+        }
 
         viewholder.binding?.btnReview?.setOnClickListener {
             fragmentUtils.addFragment(R.id.container, ReviewFragment())

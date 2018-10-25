@@ -13,7 +13,7 @@ interface UserArticleDao {
     fun insertArticle(likedArticles: UserArticle)
 
     @get:Query("SELECT * FROM articles")
-    val article: List<UserArticle>
+    val articles: List<UserArticle>
 
     @Query("DELETE from articles")
     fun deleteAllArticles()
